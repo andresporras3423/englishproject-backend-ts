@@ -1,20 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TechnosController } from './technos.controller';
 import { TechnosService } from './technos.service';
 
-describe('TechnosController', () => {
-  let controller: TechnosController;
+describe('TechnosService', () => {
+  let service: TechnosService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [TechnosController],
       providers: [TechnosService],
     }).compile();
 
-    controller = module.get<TechnosController>(TechnosController);
+    service = module.get<TechnosService>(TechnosService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(service).toBeDefined();
   });
 });

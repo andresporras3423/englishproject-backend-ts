@@ -1,14 +1,16 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users/users.entity';
+import { Technos } from './technos/entities/technos.entity';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
-import { TechnosController } from './technos/technos.controller';
+import { TechnosModule } from './technos/technos.module';
 
 @Module({
   imports: [
     UsersModule,
+    TechnosModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -16,10 +18,10 @@ import { TechnosController } from './technos/technos.controller';
       username: 'postgres',
       password: 'password',
       database: 'englishproject',
-      entities: [Users],
+      entities: [Users, Technos],
     })
   ],
-  controllers: [AppController, TechnosController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
