@@ -2,12 +2,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users/users.entity';
 import { Technos } from './technos/entities/technos.entity';
 import { Words } from './words/entities/words.entity';
+import { Tests } from './tests/entities/tests.entity';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TechnosModule } from './technos/technos.module';
 import { WordsModule } from './words/words.module';
+import { TestsModule } from './tests/tests.module';
 
 @Module({
   imports: [
@@ -20,9 +22,10 @@ import { WordsModule } from './words/words.module';
       username: 'postgres',
       password: 'password',
       database: 'englishproject',
-      entities: [Users, Technos, Words],
+      entities: [Users, Technos, Words, Tests],
     }),
-    WordsModule
+    WordsModule,
+    TestsModule
   ],
   controllers: [AppController],
   providers: [AppService],
